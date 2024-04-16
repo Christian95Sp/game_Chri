@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>My Title</title>
+    <title>Sasso, carta e forbice</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -18,13 +18,31 @@
 <body>
 
     <div id="container">
-        <div id="risultato">
+        <h2 id="titolo">Sasso - Carta - Forbice</h2>
+        <h3 id="informazioni">Benvenuto</h3>
 
+        <div>
+            <button id="carta" class="option-image" onclick="cliccatoCarta ()">✋</button>
+            <button id="forbici" class="option-image" onclick="cliccatoForbici ()">✌️</button>
+            <button id="sasso" class="option-image" onclick="cliccatoSasso ()">👊</button>
         </div>
-
+        <button id="pulsante" onclick="verdetto ()">Conferma</button>
     </div>
 
+    <div id="container2">
+        <div id="giocatore" class=""></div>
+        <div id="computer" class=""></div>
+        <div id="risultato-partita" class=""></div>
+    </div>
 
+    <div id="container3">
+        <div id="segnapunti">
+            <p id="segnapunti-giocatore"></p>
+            <p id="segnapunti-computer"></p>
+        </div>
+    </div>
+
+    <script src="./src/script.js"></script>
 </body>
 
 </html>

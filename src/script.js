@@ -1,12 +1,5 @@
 const container = document.getElementById("container");
-const link = document.createElement("a");
-
-data.forEach((object) => {
-  link.href = object.gameUrl;
-  link.innerText = object.name;
-  container.appendChild(link);
-})
-
+const risultato = document.getElementById("risultato");
 
 /* CARTA SASSO FORBICE NORMALE
 --------------TABELLA------------------------
@@ -15,55 +8,6 @@ Forbici || Carta    || Sasso     || Forbici
 Carta   || Sasso    || Forbici   || Carta
 Sasso   || Forbici  || Carta     || Sasso
  */
-
-const risultato = document.getElementById("risultato");
-
-const tentativi = 3;
-let giocatore;
-let computer;
-let puntiComputer = 0;
-let puntiGiocatore = 0;
-
-const oggetti = ["sasso", "carta", "forbici"];
-
-//scelta casuale da parte del computer
-/* let sceltaCasuale = Math.floor(Math.random() * oggetti.length);
-console.log(sceltaCasuale);
-computer = oggetti[sceltaCasuale];
-container.innerText = computer; */
-
-for (var i = 0; i < tentativi; i++) {
-  //scelta giocatore
-  giocatore = prompt('Inserisci forbice, sasso o carta');
-  giocatore = giocatore.toLowerCase();
-  console.log("giocatore: " + giocatore);
-  //scelta computer casuale
-  let sceltaCasuale = Math.floor(Math.random() * oggetti.length);
-  computer = oggetti[sceltaCasuale];
-  container.innerText = "il computer ha scelto: " + computer;
-  console.log("pc: " + computer);
-  //partita
-  if (computer == giocatore) {
-    console.log('parità');
-  } else if ((giocatore == 'sasso' && computer == 'forbice')
-    || (giocatore == 'forbice' && computer == 'carta')
-    || (giocatore == 'carta' && computer == 'sasso')) {
-
-    console.log('Hai vinto');
-    risultato.innerText = "Hai vinto";
-    puntiGiocatore++;
-
-  } else {
-    console.log('Hai perso ');
-    puntiComputer++;
-  }
-}
-
-console.log('pnt pc: ' + puntiComputer);
-console.log('pnt giocatore: ' + puntiGiocatore);
-
-
-
 
 /*  Sasso-Carta-Forbice-Lizard-Spock -> DESCRIZIONE REGOLE
 Le forbici tagliano la carta
@@ -85,46 +29,6 @@ Lucertola|| Carta  - Spock     || Forbici  - Sasso
 Spock    || Forbici- Sasso     || Carta    - Lucertola
 */
 
-/* prova
-const scelta = ["rock", "spock", "paper", "lizard", "scissors"];
-
-export const selectWinner = (user1, user2) => {
-  let result = null;
-
-  if (user1.choice === user2.choice) {
-    result = null;
-  }
-
-  if (user1.choice === "rock" && user2.choice === "scissors") {
-    result = user1;
-  }
-
-  if (user1.choice === "scissors" && user2.choice === "paper") {
-    result = user1;
-  }
-
-  if (user1.choice === "paper" && user2.choice === "rock") {
-    result = user1;
-  }
-
-  if (user1.choice === "scissors" && user2.choice === "rock") {
-    result = user2;
-  }
-
-  if (user1.choice === "paper" && user2.choice === "scissors") {
-    result = user2;
-  }
-
-  if (user1.choice === "rock" && user2.choice === "paper") {
-    result = user2;
-  }
-
-  return result;
-};
-*/
-
-
-
 /* parte inserita dentro repo challeng network/game
   {
     name: "My Game - Christian",
@@ -132,3 +36,90 @@ export const selectWinner = (user1, user2) => {
     codeUrl: "https://github.com/Christian95Sp/game_Chri"
   }
 */
+
+alert("ciao! ti va di fare qualche partita?");
+
+const oggetti = ["sasso", "carta", "forbici"];
+
+const tentativi = 3;
+let giocatore;
+let computer;
+let puntiComputer = 0;
+let puntiGiocatore = 0;
+
+let sceltaUtente;
+let nomeGiocatore = window.prompt("Ciao inserisci il tuo nome: ");
+document.getElementById("informazioni").innerHTML = "Benvenuto " + nomeGiocatore + "!";
+//nome giocatore sotto segni
+//document.getElementById("giocatore").innerHTML = nomeGiocatore + ": "
+document.getElementById("giocatore").innerHTML = nomeGiocatore + ": ";
+document.getElementById("computer").innerHTML = "Computer: ";
+
+function cliccatoCarta() {
+  sceltaUtente = "carta";
+  alert(nomeGiocatore + " hai scelto " + sceltaUtente + ", ora clicca 'conferma' per avviare il match, buona fortuna!");
+}
+
+function cliccatoForbici() {
+  sceltaUtente = "forbici";
+  alert(nomeGiocatore + " hai scelto " + sceltaUtente + ", ora clicca 'conferma' per avviare il match, buona fortuna!");
+}
+
+function cliccatoSasso() {
+  sceltaUtente = "sasso";
+  alert(nomeGiocatore + " hai scelto " + sceltaUtente + ", ora clicca 'conferma' per avviare il match, buona fortuna!");
+}
+
+function verdetto() {
+  //document.getElementById("informazioni").style.display = "none";
+  //document.getElementById("carta").style.display = "none";
+  //document.getElementById("forbici").style.display = "none";
+  //document.getElementById("sasso").style.display = "none";
+  //document.getElementById("pulsante").style.display = "none";
+
+  // for (var i = 0; i < tentativi; i++) {
+  //scelta giocatore
+  giocatore = sceltaUtente;
+  console.log("Hai scelto: " + giocatore);
+
+  //scelta computer casuale
+  let sceltaComputer = Math.floor(Math.random() * oggetti.length);
+  computer = oggetti[sceltaComputer];
+  console.log("il computer ha scelto: " + computer);
+
+  //partita
+  if (computer == giocatore) {
+    console.log('parità');
+    document.getElementById("risultato-partita").innerHTML = "Pareggio";
+    document.getElementById("risultato-partita").classList.add("yellow-text");
+
+  } else if ((giocatore == 'sasso' && computer == 'forbice')
+    || (giocatore == 'forbice' && computer == 'carta')
+    || (giocatore == 'carta' && computer == 'sasso')) {
+
+    console.log('Hai vinto');
+    document.getElementById("risultato-partita").innerHTML = "Hai vinto";
+    document.getElementById("risultato-partita").classList.add("green-text");
+    puntiGiocatore++;
+
+  } else {
+    console.log('Hai perso ');
+    document.getElementById("risultato-partita").innerHTML = "Hai perso";
+    document.getElementById("risultato-partita").classList.add("red-text");
+    puntiComputer++;
+  }
+  // }
+
+  //document.getElementById("informazioni").innerHTML = "Il computer ha scelto " + computer + ". Tu, hai scelto " + giocatore;
+  document.getElementById("giocatore").innerHTML = nomeGiocatore + ": " + giocatore;
+  document.getElementById("computer").innerHTML = "Computer: " + computer;
+
+  console.log('pnt pc: ' + puntiComputer);
+  console.log('pnt giocatore: ' + puntiGiocatore);
+
+  document.getElementById("segnapunti-giocatore").innerHTML = nomeGiocatore + ": " + puntiGiocatore;
+  document.getElementById("segnapunti-computer").innerHTML = "Computer: " + puntiComputer;
+
+  document.getElementById("informazioni").innerHTML = "Vuoi giocare ancora?? Scegli"
+
+}
