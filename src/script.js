@@ -301,7 +301,7 @@ Sasso   || Forbici  || Carta     || Sasso
 /* parte inserita dentro repo challeng network/game
   {
     name: "My Game - Christian",
-    gameUrl: "",
+    gameUrl: "https://christian95sp.github.io/game_Chri/",
     codeUrl: "https://github.com/Christian95Sp/game_Chri"
   }
 */
