@@ -25,7 +25,6 @@ document.getElementById("gioco-espansione-ls").style.display = "";
 
 //tasti invisibili
 document.getElementById("titolo").style.display = "none";
-//document.getElementById("informazioni").style.display = "none";
 document.getElementById("carta").style.display = "none";
 document.getElementById("forbici").style.display = "none";
 document.getElementById("sasso").style.display = "none";
@@ -37,6 +36,7 @@ document.getElementById("computer").style.display = "";
 document.getElementById("pulsante").style.display = "none";
 document.getElementById("pulsante-versione-ls").style.display = "none";
 
+document.getElementById("termina-partita").style.display = "none";
 
 
 function sceltaSCF() {
@@ -53,6 +53,7 @@ function sceltaSCF() {
   //pulsante gioco
   document.getElementById("pulsante").style.display = "";
   document.getElementById("pulsante-versione-ls").style.display = "none";
+  document.getElementById("risultato-partita").style.display = "none";
 }
 
 function sceltaSCFLS() {
@@ -69,6 +70,7 @@ function sceltaSCFLS() {
   //pulsante gioco
   document.getElementById("pulsante").style.display = "none";
   document.getElementById("pulsante-versione-ls").style.display = "";
+  document.getElementById("risultato-partita").style.display = "none";
 }
 
 //seleziona segno
@@ -96,7 +98,7 @@ function cliccatoSpock() {
   sceltaUtente = "spock";
   alert(nomeGiocatore + " hai scelto " + sceltaUtente + ", ora clicca 'conferma' per avviare il match, buona fortuna!");
 }
-
+//versione SASSO CARTA FORBICE 
 function verdettoStandard() {
   //scelta giocatore
   giocatore = sceltaUtente;
@@ -107,6 +109,11 @@ function verdettoStandard() {
   let sceltaComputer = Math.floor(Math.random() * oggetti.length);
   computer = oggetti[sceltaComputer];
   console.log("il computer ha scelto: " + computer);
+
+  //mosse e risultato partita
+  document.getElementById("giocatore").style.display = "";
+  document.getElementById("computer").style.display = "";
+  document.getElementById("risultato-partita").style.display = "";
 
   //partita
   if (computer == giocatore) {
@@ -146,9 +153,11 @@ function verdettoStandard() {
   document.getElementById("segnapunti-computer").innerHTML = "Computer: " + puntiComputer;
 
   document.getElementById("informazioni").innerHTML = "Vuoi giocare ancora?? Scegli"
+
+  document.getElementById("termina-partita").style.display = "";
 }
 
-//prova versione SASSO CARTA FORBICE LIZARD e SPOCK
+//versione SASSO CARTA FORBICE LIZARD e SPOCK
 function verdettoEspansione() {
   // for (var i = 0; i < tentativi; i++) {
   const oggetti = ["sasso", "carta", "forbice", "lizard", "spock"];
@@ -160,6 +169,11 @@ function verdettoEspansione() {
   let sceltaComputer = Math.floor(Math.random() * oggetti.length);
   computer = oggetti[sceltaComputer];
   console.log("il computer ha scelto: " + computer);
+
+  //mosse e risultato partita
+  document.getElementById("giocatore").style.display = "";
+  document.getElementById("computer").style.display = "";
+  document.getElementById("risultato-partita").style.display = "";
 
   //partita
   if (computer == giocatore) {
@@ -211,6 +225,48 @@ function verdettoEspansione() {
   document.getElementById("segnapunti-computer").innerHTML = "Computer: " + puntiComputer;
 
   document.getElementById("informazioni").innerHTML = "Vuoi giocare ancora?? Scegli"
+
+  document.getElementById("termina-partita").style.display = "";
+}
+
+function ritornoAlMenu() {
+  //scelta iniziale del gioco (tasti visibili)
+  document.getElementById("gioco-standard").style.display = "";
+  document.getElementById("gioco-espansione-ls").style.display = "";
+
+  //tasti invisibili
+  document.getElementById("titolo").style.display = "none";
+  document.getElementById("informazioni").style.display = "";
+  document.getElementById("informazioni").innerHTML = "Scegli la modalità";
+  document.getElementById("carta").style.display = "none";
+  document.getElementById("forbici").style.display = "none";
+  document.getElementById("sasso").style.display = "none";
+  document.getElementById("lizard").style.display = "none";
+  document.getElementById("spock").style.display = "none";
+  document.getElementById("giocatore").style.display = "none";
+  document.getElementById("computer").style.display = "none";
+
+  document.getElementById("pulsante").style.display = "none";
+  document.getElementById("pulsante-versione-ls").style.display = "none";
+  document.getElementById("termina-partita").style.display = "none";
+
+  if (puntiGiocatore == puntiComputer) {
+    document.getElementById("risultato-partita").innerHTML = "Pareggio";
+    document.getElementById("risultato-partita").classList.remove("red-text", "green-text");
+    document.getElementById("risultato-partita").classList.add("yellow-text");
+
+  } else if (puntiGiocatore > puntiComputer) {
+    document.getElementById("risultato-partita").innerHTML = "Hai vinto";
+    document.getElementById("risultato-partita").classList.remove("red-text", "yellow-text");
+    document.getElementById("risultato-partita").classList.add("green-text");
+
+  } else {
+    document.getElementById("risultato-partita").innerHTML = "Hai perso";
+    document.getElementById("risultato-partita").classList.remove("yellow-text", "green-text");
+    document.getElementById("risultato-partita").classList.add("red-text");
+  }
+
+  document.getElementById("risultato-partita").style.display = "";
 }
 
 /*  Sasso-Carta-Forbice-Lizard-Spock -> DESCRIZIONE REGOLE

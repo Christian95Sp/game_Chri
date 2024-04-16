@@ -41,7 +41,8 @@ body {
 #pulsante,
 #pulsante-versione-ls,
 #gioco-espansione-ls,
-#gioco-standard {
+#gioco-standard,
+#termina-partita {
     margin-top: 30px;
     display: inline-block;
     outline: 0;
