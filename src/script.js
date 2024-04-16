@@ -103,6 +103,7 @@ function verdettoStandard() {
   //scelta giocatore
   giocatore = sceltaUtente;
   console.log("Hai scelto: " + giocatore);
+
   const oggetti = ["sasso", "carta", "forbice"];
 
   //scelta computer casuale
