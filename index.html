@@ -18,12 +18,14 @@
 <body>
 
     <div id="container">
-        <!--         <button id="gioco-standard" onclick="verdetto ()">Sasso - Carta - Forbice</button>
-        <button id="gioco-espansione-ls" onclick="verdetto ()">Sasso - Carta - Forbice - Lizard - Spock</button> -->
-        <h2 id="titolo">Sasso - Carta - Forbice - Lizard - Spock</h2>
+        <h2 id="titolo">Sasso - Carta - Forbice</h2>
         <h3 id="informazioni">Benvenuto</h3>
 
         <div>
+            <!-- tipo di gioco -->
+            <button id="gioco-standard" onclick="sceltaSCF()">Sasso - Carta - Forbice</button>
+            <button id="gioco-espansione-ls" onclick="sceltaSCFLS()">Sasso - Carta - Forbice - Lizard - Spock</button>
+            <!-- segni sasso -carta - forbice -->
             <button id="carta" class="option-image" onclick="cliccatoCarta ()">✋</button>
             <button id="forbici" class="option-image" onclick="cliccatoForbici ()">✌️</button>
             <button id="sasso" class="option-image" onclick="cliccatoSasso ()">👊</button>
@@ -32,7 +34,8 @@
             <button id="spock" class="option-image" onclick="cliccatoSpock ()">🖖</button>
 
         </div>
-        <button id="pulsante" onclick="verdetto ()">Conferma</button>
+        <button id="pulsante" onclick="verdettoStandard ()">Conferma</button>
+        <button id="pulsante-versione-ls" onclick="verdettoEspansione ()">Conferma 2</button>
     </div>
 
     <div id="container2">

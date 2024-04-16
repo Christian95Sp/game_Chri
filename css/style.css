@@ -38,7 +38,10 @@ body {
     background-color: rgb(112, 50, 255);
 }
 
-#pulsante {
+#pulsante,
+#pulsante-versione-ls,
+#gioco-espansione-ls,
+#gioco-standard {
     margin-top: 30px;
     display: inline-block;
     outline: 0;
