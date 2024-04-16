@@ -45,6 +45,7 @@ body {
 #gioco-espansione-ls,
 #gioco-standard,
 #termina-partita {
+    align-items: center;
     margin-top: 30px;
     display: inline-block;
     outline: 0;
